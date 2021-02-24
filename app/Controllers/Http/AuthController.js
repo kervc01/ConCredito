@@ -1,5 +1,8 @@
 'use strict'
 
+
+const User = use('App/Models/User');
+
 class AuthController {
     homeView({ view }) {
         return view.render('home')
@@ -13,17 +16,18 @@ class AuthController {
 
     async postLogin({ request, auth, response }) {
         await auth.attempt(request.input('email'), request.input('password'))
-        return response.route('index')
+        return response.route('home')
     }
 
     async postRegister({ request, session, response }) {
-        const users = await User.create({
+        const user = await User.create({
             username: request.input('name'),
             email: request.input('email'),
-            password: request.input('password')
+            password: request.input('password'),
+            admin: request.input('admin')
         })
         session.flash({ successmessage: 'User have been created successfully' })
-        return response.route('login.create');
+        return response.route('home');
     }
 
     async logout({ auth, response }) {

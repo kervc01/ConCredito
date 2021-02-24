@@ -15,22 +15,29 @@
     <div class="navbar-right" id="navbarNav">
         @loggedIn
             <ul class="navbar-nav">
+                @if(auth.user.admin)
                     <li>
                         <div class="text-right">
                              <a href="{{route('create.quote')}}" class="btn btn-outline-primary">Crear formulario</a>
                         </div>
                     </li>
-                    <li>
-                        <div class="text-right">
-                             <a href="{{route('create.quote')}}" class="btn btn-outline-primary">Ver formulario</a>
-                        </div>
-                    </li>
+                   
                     <li>
                         <div class="text-right">
                              <a href="{{route('create.quote')}}" class="btn btn-outline-primary">Evaluar formulario</a>
                         </div>
                     </li>
-
+                    <li>
+                        <div class="text-right">
+                             <a href="{{route('register.create')}}" class="btn btn-outline-primary">Registrar Usuario</a>
+                        </div>
+                    </li>
+                @endif
+                <li>
+                    <div class="text-right">
+                         <a href="{{route('create.quote')}}" class="btn btn-outline-primary">Ver formulario</a>
+                    </div>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                        {{ auth.user.username}}
@@ -39,7 +46,7 @@
                         <form method="POST" action="{{route('logout')}}">
                             {{ csrfField() }}
                               <button  type="submit" class="dropdown-item" href="">logout</button>
-                        </form>
+                        </form> 
                     </div>
                 </li>
             </ul>
