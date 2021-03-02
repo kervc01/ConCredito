@@ -13,14 +13,17 @@
         <th scope="col">Apellido Paterno</th>
         <th scope="col">Estatus</th>
         <th scope="col">Observaciones</th>
-        @if(auth.user.admin)<!--Validacion de usuario (root) -->
+        <!--Validacion de usuario (root) -->
+        @if(auth.user.admin)
         <th scope="col">Upload</th>
         <th scope="col">EVALUACION</th>
-        @endif <!--fin de la validacion -->
+        <!--fin de la validacion -->
+        @endif 
       </tr>
     </thead>
     <tbody>
-      @each(quote in quotes) <!--each para llamar los datos de la base mysql y mostrarlos -->
+      <!--each para llamar los datos de la base mysql y mostrarlos -->
+      @each(quote in quotes) 
       <tr class="table-active">
         <td>{{quote.id}}</td>
         <td>{{quote.nombre}}</td>
@@ -30,7 +33,8 @@
           <h6 class="text-center" style="color:green;font-weight:bold;background-color:black">{{quote.estatus}}</h6>
         </td>
         <td>{{quote.observaciones}}</td>
-        @if(auth.user.admin)<!--Validacion de usuario (root) -->
+        <!--Validacion de usuario (root) -->
+        @if(auth.user.admin)
         <td>{{quote.file}}</td>
         <td>
           <a href="/edit-quote/{{quote.id}}" class="btn btn-warning btn-sm">Editar</a>
@@ -42,8 +46,10 @@
         </td>
       </form>
       </tr>
-      @endif<!--fin de la validacion -->
-      @endeach <!--fin each -->
+      <!--fin de la validacion -->
+      @endif
+      <!--fin each -->
+      @endeach 
     </tbody>
   </table>
 </div>
