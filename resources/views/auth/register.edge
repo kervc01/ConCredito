@@ -1,17 +1,21 @@
 @layout('layouts/master')
 @section('content')
+
   <div class="container ">
+    <div class="text-center">
+      <h2>Registrar Usuario <h2>
+    </div>
     <div class="row">
-        <div class="col-md-4  bg-white p-3 mt-5 shadow no-border rounded offset-md-4">
-          <form method="POST" action="{{route('register.store')}}">
+        <div class="col-md-4  bg-light p-3 mt-5 shadow border border-warning rounded offset-md-4">
+          <form method="POST" action="{{route('user-register.store')}}">
             {{ csrfField() }}
               <div class="form-group">
-                <label for="name">Fullname</label>
+                <label for="name">Nombre Completo</label>
                 <input type="text" class="form-control" id="name" name="name"  value="{{old('name','')}}" placeholder="Nombre Completo">
                 {{ elIf('<span class=text-danger>$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
               </div>
               <div class="form-group">
-                <label for="email">Email address</label>
+                <label for="email">Email </label>
                 <input type="email" class="form-control" id="email"  name="email" value="{{old('email','')}}" placeholder="Email">
                 {{ elIf('<span class=text-danger>$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
               </div>
@@ -25,7 +29,7 @@
                 <input type="checkbox"  id="admin" name="admin" placeholder="Tipo usuario" value="1">
               </div>
               <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Register</button>
+                  <button type="submit" class="btn btn-primary">Registrar</button>
               </div>
           </form>
         </div>

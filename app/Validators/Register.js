@@ -11,11 +11,11 @@ class Register {
 
     get messages() {
         return {
-            'name.required': 'Full name is required',
-            'email.required': 'email is required',
-            'email.unique': 'email already exists',
-            'password.required': 'password is required',
-            'password.min': 'password should be at least 8 characters'
+            'name.required': 'Se requiere nombre completo',
+            'email.required': 'correo electronico requerido',
+            'email.unique': 'el Email ya existe',
+            'password.required': 'se requiere contraseña',
+            'password.min': 'la contraseña debe tener al menos 8 caracteres'
         }
     }
 }

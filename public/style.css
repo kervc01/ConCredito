@@ -9,7 +9,11 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     background-image: url("/splash.png");
-    background-color: #220052;
+    background-color: #07030ce0;
+}
+
+.bg-4 {
+    background-color: #8393a4
 }
 
 * {
@@ -20,6 +24,7 @@ body {
 a {
     color: inherit;
     text-decoration: underline;
+    letter-spacing: 3px;
 }
 
 p {
@@ -29,6 +34,7 @@ p {
 h1,
 h2,
 h3,
+td,
 footer {
     color: rgb(229, 238, 229);
 }
@@ -36,6 +42,11 @@ footer {
 h1 {
     letter-spacing: 3px;
     text-decoration: overline;
+    padding-bottom: 5%;
+}
+
+h3 {
+    padding-bottom: 3%;
 }
 
 .quote-wrapper {

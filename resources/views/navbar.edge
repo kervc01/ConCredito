@@ -1,68 +1,67 @@
-
+@loggedIn<!--Validacion de logeo par mostrar los menus de navegacion -->
+<nav class="navbar navbar-expand-lg navbar-dark text-white" style="padding-bottom: 50px;">
+  <a style="font-size:1.3rem" class="navbar-brand d-none d-lg-block text-left">ConCredito</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active ">
+        <a class="btn text-white" href="/home">Home</a>
+      </li>
+    </ul>
+  </div>
+  <ul class="navbar-nav">
+    @if(auth.user.admin) <!--Validacion de usuario par mostrar los menus de navegacion -->
+    <li>
+      <div class="text-right " style="padding-right:2em">
+        <a href="{{route('register.create')}}" class="btn btn-outline-primary">Registrar Usuario</a>
+      </div>
+    </li>
+    @endif
+    <li>
+      <div class="text-right" style="padding-right:2em">
+        <a href="{{route('view.quote')}}" class="btn btn-outline-primary">Ver formulario</a>
+      </div>
+    </li>
+    <li>
+      <div class="text-right" style="padding-right:2em">
+        <a href="{{route('create.quote')}}" class="btn btn-outline-primary">Crear formulario</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        {{ auth.user.username}}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+        <form method="POST" action="{{route('logout')}}">
+          {{ csrfField() }}
+          <button type="submit" class="dropdown-item " href="">Exit</button>
+        </form>
+      </div>
+    </li>
+  </ul>
+</nav>
+@else
 <nav class="navbar navbar-expand-lg navbar-dark text-white">
-    <a class="navbar-brand" >LOGO</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+  <a style=font-size:2rem class="navbar-brand d-none d-lg-block text-left">ConCredito</a>
+  <div class="navbar-right" id="navbarNav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active ">
-                <a class="btn text-white" href="/home">Home</a>
-            </li>
-        </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item active ">
+          <a class="btn text-white" href="/home">Home</a>
+        </li>
+      </ul>
     </div>
-    <div class="navbar-right" id="navbarNav">
-        @loggedIn
-            <ul class="navbar-nav">
-                @if(auth.user.admin)
-                    <li>
-                        <div class="text-right">
-                             <a href="{{route('create.quote')}}" class="btn btn-outline-primary">Crear formulario</a>
-                        </div>
-                    </li>
-                   
-                    <li>
-                        <div class="text-right">
-                             <a href="{{route('create.quote')}}" class="btn btn-outline-primary">Evaluar formulario</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="text-right">
-                             <a href="{{route('register.create')}}" class="btn btn-outline-primary">Registrar Usuario</a>
-                        </div>
-                    </li>
-                @endif
-                <li>
-                    <div class="text-right">
-                         <a href="{{route('create.quote')}}" class="btn btn-outline-primary">Ver formulario</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       {{ auth.user.username}}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <form method="POST" action="{{route('logout')}}">
-                            {{ csrfField() }}
-                              <button  type="submit" class="dropdown-item" href="">logout</button>
-                        </form> 
-                    </div>
-                </li>
-            </ul>
-        @else
-            <ul class="navbar-nav">
-                <li class="nav-item active pr-2">
-                    <a href="{{route('login.create')}}" class="btn btn-outline-danger">
-                      login
-                    </a>
-                </li>
-                <li class="nav-item active pr-2">
-                    <a href="{{route('register.create')}}" class="btn btn-outline-primary">
-                        Register
-                    </a>
-                </li>
-            </ul>
-        @endloggedIn
-    </div>
+
+  </div>
 </nav>
+
+@endloggedIn

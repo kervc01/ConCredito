@@ -1,24 +1,50 @@
 @layout('layouts/master')
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card shadow-lg bg-dark text-white">
-                <div class="card-body">
-                    <div class="float-right">
-                        <a href="/" class="btn btn-outline-primary ">back</a>
-                    </div>
-                        <br>
-                    <div class="clear-fix"></div>
-                    <blockquote class="blockquote mb-0">
-                        <p>{{quote.body}}</p>
-                        <footer class="blockquote-footer">
-                            <cite title="Source Title">{{quote.username}}</cite>
-                        </footer>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="text-center">
+    <h2 style="padding-bottom:3%">Visualizacion del Formulario <h2><!--Visualizar el formulario por medio de una tabla -->
+  </div>
+  <table class="table table-striped table-dark" >
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido Materno</th>
+        <th scope="col">Apellido Paterno</th>
+        <th scope="col">Estatus</th>
+        <th scope="col">Observaciones</th>
+        @if(auth.user.admin)<!--Validacion de usuario (root) -->
+        <th scope="col">Upload</th>
+        <th scope="col">EVALUACION</th>
+        @endif <!--fin de la validacion -->
+      </tr>
+    </thead>
+    <tbody>
+      @each(quote in quotes) <!--each para llamar los datos de la base mysql y mostrarlos -->
+      <tr class="table-active">
+        <td>{{quote.id}}</td>
+        <td>{{quote.nombre}}</td>
+        <td>{{quote.apellidom}}</td>
+        <td>{{quote.apellidop}}</td>
+        <td>
+          <h6 class="text-center" style="color:green;font-weight:bold;background-color:black">{{quote.estatus}}</h6>
+        </td>
+        <td>{{quote.observaciones}}</td>
+        @if(auth.user.admin)<!--Validacion de usuario (root) -->
+        <td>{{quote.file}}</td>
+        <td>
+          <a href="/edit-quote/{{quote.id}}" class="btn btn-warning btn-sm">Editar</a>
+        </td>
+        <form method="POST" action="/delete-quote/{{quote.id}}">
+          {{ csrfField() }}
+        <td>
+          <button type="submit" href="/" class="btn btn-danger btn-sm">Eliminar</button>
+        </td>
+      </form>
+      </tr>
+      @endif<!--fin de la validacion -->
+      @endeach <!--fin each -->
+    </tbody>
+  </table>
 </div>
 @endsection

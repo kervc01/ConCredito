@@ -4,19 +4,49 @@
     <div class="row">
         <div class="col-md-6 shadow bg-white rounded p-3 offset-md-3">
             <div class="float-right">
-                <a href="/" class="btn btn-outline-dark ">back</a>
+                <a href="/quote" class="btn btn-outline-dark ">back</a>
             </div>
-            <br>
-
             <div class="clear-fix"></div>
-            <form method="POST" action="/update-quote/{{quote.id}}">
+            <form method="POST" action="/update-quote/{{quote.id}}"><!--Method post y action -->
                 {{ csrfField() }}
                 <div class="form-group">
-                    <label for="pasword">Edit Quote</label>
-                    <textarea type="text" rows="5"  name='body' id="body" class="form-control" id="quote" placeholder="write the inspirational quote">{{quote.body}}</textarea>
+                    <label for="pasword">Editar Formulario</label> <!--inicio del formulario para editar -->
+                    <div class="text-center">
+                    <label for="pasword">Editar Nombre</label>
+                    <input type="text" rows="5"  name='name' id="body" class="form-control" id="quote" value="{{quote.nombre}}">
+                    <label for="pasword">Editar Apellido Materno</label>
+                    <input type="text" rows="5"  name='apellidom' id="body" class="form-control" id="quote" value="{{quote.apellidom}}">
+                    <label for="pasword">Editar Apellido Paterno</label>
+                    <input type="text" rows="5"  name='apellidop' id="body" class="form-control" id="quote" value="{{quote.apellidop}}">
+                    <label for="pasword">Editar Estaus</label> <!--Editar el estatus -->
+                    <div class="form-check text-left">
+                        <input class="form-check-input" type="radio" name="estatus" id="flexRadioDefault1" rows="5" id="body"  id="quote" value="Enviado" value="{{quote.estatus}}">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Enviado
+                          </label>
+                        </div>
+                    <div class="form-check text-left">
+                        <input class="form-check-input" type="radio" name="estatus" id="flexRadioDefault2" rows="5" id="body"  id="quote" value="Autorizado" value="{{quote.estatus}}">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Autorizado
+                          </label>
+                        </div>
+                    <div class="form-check text-left">
+                    <input class="form-check-input" type="radio" name="estatus" id="flexRadioDefault3" rows="5" id="body"  id="quote" value="Rechazado" value="{{quote.estatus}}">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Rechazado
+                      </label>
+                    </div>
+                    <label for="pasword">Editar Observaciones</label>
+                    <input type="text" rows="5"  name='observaciones' id="body" class="form-control" id="quote" value="{{quote.observaciones}}">
+                    <!--<div>
+                        <label for="">Archivos</label>
+                        <img class="card-img-top" src={{quote.file}} alt="">
+                    </div>
+                </div>-->
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                <div class="text-center" style="padding-top:1em">
+                    <button href="/quote" type="submit" class="btn btn-primary">Acutualizar</button>
                 </div>
 
             </form>

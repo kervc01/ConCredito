@@ -1,68 +1,97 @@
 @layout('layouts/master')
 @section('content')
 <div class="container">
+    <div class="text-center">
+        <h2>Registrar Formulario <h2> <!--REgistro del formulario -->
+      </div>
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-6 shadow bg-white mt-5 rounded p-3">
+        <div class="col-md-6 shadow bg-light border-warning mt-5 rounded p-3">
             <div class="float-right">
-                <a href="/" class="btn btn-outline-dark ">back</a>
+                <a href="/home" class="btn btn-outline-dark ">back</a>
             </div>
-                <br>
-
-            <div class="clear-fix"></div>
-                <form method="POST" action="{{route('store.quote')}}">
+            <br>
+            <div class="clear-fix">
+                <form method="POST" action="{{route('store.quote')}}" enctype="multipart/form-data"><!--inicio method post y action -->
                     {{ csrfField() }}
                     <div class="form-group">
-                        <label for="quote">Nombre</label>
-                        <input type="text" rows="5"  name='body' id="body" class="form-control" id="quote" placeholder="Nombre">
+                        <label for="name">Nombre</label>
+                        <input type="text" rows="5"  name='nombre' id="nombre" class="form-control" id="quote" placeholder="Nombre" required>
                     </div>
                     <div class="form-group">
-                        <label for="quote">Apellido Materno</label>
-                        <input type="text" rows="5"  name='apellidom' id="apellidom" class="form-control" id="quote" placeholder="Apellido Materno">
+                        <label for="apellidom">Apellido Materno</label>
+                        <input type="text" rows="5"  name='apellidom' id="apellidom" class="form-control" id="quote" placeholder="Apellido Materno" required>
                     </div>
                     <div class="form-group">
-                        <label for="quote">Apellido Paterno</label>
-                        <input type="text" rows="5"  name='apellidop' id="apellidop" class="form-control" id="quote" placeholder="Apellido Paterno">
+                        <label for="apellidop">Apellido Paterno</label>
+                        <input type="text" rows="5"  name='apellidop' id="apellidop" class="form-control" id="quote" placeholder="Apellido Paterno" required>
                     </div>
                     <div class="form-group">
-                        <label for="quote">Calle</label>
-                        <input type="text" rows="5"  name='calle' id="calle" class="form-control" id="quote" placeholder="Calle">
+                        <label for="calle">Calle</label>
+                        <input type="text" rows="5"  name='calle' id="calle" class="form-control" id="quote" placeholder="Calle" required> 
                     </div>
                     <div class="form-group">
-                        <label for="quote">Numero</label>
-                        <input type="number" rows="5"  name='numero' id="numero" class="form-control" id="quote" placeholder="Numero">
+                        <label for="numero">Numero</label>
+                        <input type="number" rows="5"  name='numero' id="numero" class="form-control" id="quote" placeholder="Numero" required>
                     </div>
                     <div class="form-group">
-                        <label for="quote">Calle</label>
-                        <input type="text" rows="5"  name='calle' id="calle" class="form-control" id="quote" placeholder="Calle">
+                        <label for="colonia">Colonia</label>
+                        <input type="text" rows="5"  name='colonia' id="colonia" class="form-control" id="quote" placeholder="Colonia" required>
                     </div>
                     <div class="form-group">
-                        <label for="quote">Colonia</label>
-                        <input type="text" rows="5"  name='colonia' id="colonia" class="form-control" id="quote" placeholder="Colonia">
+                        <label for="codigo">Codigo Postal</label>
+                        <input type="number" rows="5"  name='codigo' id="codigo" class="form-control" id="quote" placeholder="C.P" required>
                     </div>
                     <div class="form-group">
-                        <label for="quote">Codigo Postal</label>
-                        <input type="number" rows="5"  name='codigo' id="codigo" class="form-control" id="quote" placeholder="C.P">
+                        <label for="telefono">Telefono</label>
+                        <input type="tel" rows="5"  name='telefono' id="telefono" class="form-control" id="quote" placeholder="Telefono" maxlength="6" required>
                     </div>
                     <div class="form-group">
-                        <label for="quote">Telefono</label>
-                        <input type="tel" rows="5"  name='telefono' id="telefono" class="form-control" id="quote" placeholder="Telefono">
+                        <label for="rfc">RFC</label>
+                        <input type="text" rows="5"  name='rfc' id="rfc" class="form-control" id="quote" placeholder="RFC" required>
                     </div>
                     <div class="form-group">
-                        <label for="quote">RFC</label>
-                        <input type="text" rows="5"  name='rfc' id="rfc" class="form-control" id="quote" placeholder="RFC">
-                    </div>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Eviar</button>
-                         <button type="submit" class="btn btn-danger">Salir</button>
-                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="estatus" id="flexRadioDefault1" value="Enviado" checked>
+                            <label class="form-check-label" for="flexRadioDefault1" >
+                              Enviado
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="estatus" id="flexRadioDefault2" value="Autorizado" disabled>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                              Autorizado
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="estatus" id="flexRadioDefault3" value="Rechazado" disabled>
+                            <label class="form-check-label" for="flexRadioDefault3">
+                              Rechazado
+                            </label>
+                          </div>
                     </div>
                     
-                </form>
+                    <div class="mb-3">
+                        <label for="documento" class="form-label">Añadir Archivo</label>
+                        <input type="file" name="file" multiple />
+                      </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Eviar</button>
+                        
+                    </div>
+                </form><!--fin del method y action -->
+                <div class="col-12 text-center">
+                <form method="POST" action="{{route('namefunction')}}"><!--inicio del method y action -->
+                    {{ csrfField() }} 
+                <button class="btn btn-danger" onclick="alert('Se perderan todos los datos.')" >Salir</button>
+                </form><!--fin del method y action -->
+            </div>
+            </div>
             </div>
         </div>
-        <div class="col-md-3"></div>
+        
     </div>
 </div>
 @endsection
+
+    
